@@ -255,16 +255,6 @@ for model in model_list:
 
     print(f"RMSE for {model.__class__.__name__} Model is {score: .2f} ppm.")
 
-    resids = y_pred - y_dev
-    resids.describe()
-
-    sns.residplot(x=np.linspace(0, 1, resids.size),
-                  y=resids,
-                  lowess=True,
-                  line_kws={"color": "red", "linestyle": "-."},
-                  scatter_kws={"alpha": 0.25, "color": "gray"})
-    plt.show()
-
 # Refit Best Base Model
 best_model = HistGradientBoostingRegressor(random_state=43)
 pipe = Pipeline([
@@ -297,13 +287,13 @@ defaults_params = {
     "model__l2_regularization": 0
 }
 
-for param, param_space in param_grid.items():
-    hp.validation_curve_constructor(pipe,
-                                    x_train,
-                                    y_train,
-                                    param,
-                                    param_space,
-                                    defaults_params[param])
+#for param, param_space in param_grid.items():
+#    hp.validation_curve_constructor(pipe,
+#                                    x_train,
+#                                    y_train,
+#                                    param,
+#                                    param_space,
+#                                    defaults_params[param])
 
 # Randomized Search
 param_grid = {
