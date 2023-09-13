@@ -75,8 +75,8 @@ def evaluator(model, x_dev, y_dev):
 
     resids = y_pred - y_dev
 
-    sns.residplot(x=y_dev,
-                  y=y_pred,
+    sns.regplot(x=y_pred,
+                  y=resids,
                 lowess=True,
                 order=1,
                   line_kws={"color": "red", "linestyle": "-."},
