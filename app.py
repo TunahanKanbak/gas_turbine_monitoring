@@ -8,7 +8,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.UNITED])
 app.layout = dbc.Container(
     [
         dcc.Interval(
-            interval=1000,
+            interval=500,
             id="update-interval",
             n_intervals=0
         ),

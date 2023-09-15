@@ -5,7 +5,6 @@ import helper as hp
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import mutual_info_regression
 from sklearn.neighbors import LocalOutlierFactor
-from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
@@ -314,7 +313,7 @@ random_search = RandomizedSearchCV(pipe,
 #random_search.fit(x_train, y_train)
 
 #joblib.dump(random_search, "RandomizedSearchCV.pkl")
-random_search = joblib.load("RandomizedSearchCV.pkl")
+random_search = joblib.load("../static/RandomizedSearchCV.pkl")
 
 cv_results_random = pd.DataFrame(random_search.cv_results_)
 [print(f"(Random Search) Best parameter for {key} is {value}") for key, value in random_search.best_params_.items()]
@@ -343,7 +342,7 @@ grid_search = GridSearchCV(pipe,
 #grid_search.fit(x_train, y_train)
 
 #joblib.dump(grid_search, "GridSearchCV.pkl")
-grid_search = joblib.load("GridSearchCV.pkl")
+grid_search = joblib.load("../static/GridSearchCV.pkl")
 
 cv_results_grid = pd.DataFrame(grid_search.cv_results_)
 [print(f"(Grid Search) Best parameter for {key} is {value}") for key, value in grid_search.best_params_.items()]
